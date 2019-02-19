@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  authtoken: any;
+  authToken: any;
   user: any;
   
   constructor(private http: HttpClient) { }
@@ -16,5 +16,27 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
       .pipe(map((response: any) => response)); 
+  }
+
+  authenticateUser(user){
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+      .pipe(map((response: any) => response)); 
+  }
+
+  storeUserData(token, user){
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
+
+  logout(token, user){
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
   }
 }
