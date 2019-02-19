@@ -215,7 +215,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n<p>Welcome to your Dashboard, {{user.name}}</p>\n"
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n<p>Welcome to your Dashboard.</p>\n"
 
 /***/ }),
 
